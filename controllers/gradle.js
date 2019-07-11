@@ -7,6 +7,7 @@ class GradleController extends BaseContorller {
     this.req = req;
   }
   build(){
+    console.log(this.req.body);
     let EventName = this.req.body.event_name;
     let ref = this.req.body.ref;
     if(EventName != "tag_push"){
