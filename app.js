@@ -7,6 +7,7 @@ const GradleController = require("./controllers/gradle");
 const app = express();
 
 app.use(logger('dev'));
+app.set('view engine', 'html');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -27,6 +28,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(9999, () => {console.log("start at port 9000")});
+app.listen(9999, () => {console.log("start at port 9999")});
 
 module.exports = app;
