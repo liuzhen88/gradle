@@ -8,10 +8,11 @@ then
     cd $projectdir
     git checkout test
     git pull --all
-    
+
     if git rev-parse -q --verify "refs/tags/$1" >/dev/null; then
         git checkout $1
         yarn install
+        yarn run build
         yarn run build:doc
         rm -rf $dockerdist*
         cp -r ./docs/* $dockerdist
