@@ -33,6 +33,9 @@ class GradleController extends BaseContorller {
     }
     this.responseNoContent();
     let data = shell.exec(`sh build.sh ${tagId} ${projectName}`);
+    console.log('--------执行结果----------')
+    console.log(data);
+    console.log('------------------')
     if(data.code != 0){
       // send email
     }
