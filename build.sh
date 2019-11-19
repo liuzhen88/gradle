@@ -1,5 +1,5 @@
 #!/bin/bash
-projectdir=/opt/test-gradle/
+projectdir=/data/code/$2/
 dockerdist=/data/code/aife-test-dist/
 
 if [ $1 ]
@@ -14,6 +14,7 @@ then
         yarn install
         yarn run build
         yarn run build:doc
+        npm publish $1
         rm -rf $dockerdist*
         cp -r ./docs/* $dockerdist
     else

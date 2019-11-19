@@ -8,6 +8,12 @@ class GradleController extends BaseContorller {
   }
   build(){
     console.log(this.req.body);
+
+    if(this.req.body.object_kind != 'tag_push') {
+      this.responseNoContent();
+      return false;
+    }
+
     let EventName = this.req.body.event_name;
     let ref = this.req.body.ref;
     if(EventName != "tag_push"){
@@ -20,13 +26,13 @@ class GradleController extends BaseContorller {
       return false;
     }
     let tagId = ref.replace("refs/tags/", "");
-    //let defaultBranch = this.req.body.project.default_branch;
+    let projectName = this.req.body.project.name;
     if(!tagId){
       console.error("tagId not found");
       return false;
     }
     this.responseNoContent();
-    let data = shell.exec("sh build.sh " + tagId);
+    let data = shell.exec(`sh build.sh ${tagId} ${projectName}`);
     if(data.code != 0){
       // send email
     }
