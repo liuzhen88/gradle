@@ -18,6 +18,10 @@ then
         npm publish
         rm -rf $dockerdist*
         cp -r ./docs/* $dockerdist
+
+        docker stop aife-ui
+        docker rm aife-ui
+        docker run -it -d -p 4874:80 -v /data/code/aife-ui-dist/:/usr/share/nginx/html/ --name aife-ui nginx:stable-alpine
     else
         echo "git does not find $1 tag"
     fi
