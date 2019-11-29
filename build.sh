@@ -6,6 +6,7 @@ if [ $1 ]
 then
     echo -e "\033[36m tagId = $1 \033[0m" 
     cd $projectdir
+    git stash
     git checkout test
     git pull --all
 
@@ -18,6 +19,7 @@ then
         npm publish
         rm -rf $dockerdist*
         cp -r ./docs/* $dockerdist
+        git stash
 
         docker stop aife-ui
         docker rm aife-ui
