@@ -22,6 +22,10 @@ then
         docker stop aife-ui
         docker rm aife-ui
         docker run -it -d -p 4874:80 -v /data/code/aife-ui-dist/:/usr/share/nginx/html/ --name aife-ui nginx:stable-alpine
+    
+        docker stop test
+        docker rm test
+        docker run -it -d -p 9527:80 -v /data/code/aife-ui-dist/:/usr/share/nginx/html/ --name test nginx:stable-alpine
     else
         echo "git does not find $1 tag"
     fi
