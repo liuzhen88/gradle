@@ -14,9 +14,11 @@ then
         yarn install
         yarn run build
         yarn run build:doc
-        npm publish $1
+        npm version $1
+        npm publish
         rm -rf $dockerdist*
         cp -r ./docs/* $dockerdist
+        git stash
     else
         echo "git does not find $1 tag"
     fi

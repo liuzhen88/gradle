@@ -32,6 +32,10 @@ class GradleController extends BaseContorller {
       return false;
     }
     this.responseNoContent();
+
+    
+
+
     let data = shell.exec(`sh build.sh ${tagId} ${projectName}`);
     console.log('--------执行结果----------')
     console.log(data);
