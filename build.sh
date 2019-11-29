@@ -1,6 +1,6 @@
 #!/bin/bash
-projectdir=/data/code/$2/
-dockerdist=/data/code/aife-test-dist/
+projectdir=/data/code/aife-ui/
+dockerdist=/data/code/aife-ui-dist/
 
 if [ $1 ]
 then
@@ -18,7 +18,6 @@ then
         npm publish
         rm -rf $dockerdist*
         cp -r ./docs/* $dockerdist
-        git stash
     else
         echo "git does not find $1 tag"
     fi
